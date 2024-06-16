@@ -34,24 +34,17 @@ pair<int, int> getFloorAndCeil(int arr[], int n, int x) {
     int mid=0;
     while(s<=e){
      mid=s+(e-s)/2;
-        if(arr[mid]>=x){
-            c=arr[mid];
-            e=mid-1;
+        if(arr[mid]==x){
+            return make_pair(arr[mid],arr[mid]);
         }
-        else{
-            s=mid+1;
-        }
-    }
-    s=0;e=n-1;
-    while(s<=e){
-        mid=s+(e-s)/2;
-        if(arr[mid]<=x){
+        else if(arr[mid]<x){
             f=arr[mid];
             s=mid+1;
         }
         else{
+            c=arr[mid];
             e=mid-1;
         }
     }
-    return {f,c};
+    return make_pair(f,c);
 }
