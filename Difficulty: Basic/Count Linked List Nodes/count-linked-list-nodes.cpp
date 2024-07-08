@@ -15,7 +15,7 @@ struct Node {
 
 // } Driver Code Ends
 /* Link list node */
-/* 
+/*
 struct Node
 {
     int data;
@@ -27,13 +27,14 @@ class Solution {
   public:
     // Function to count nodes of a linked list.
     int getCount(struct Node* head) {
-        Node*temp=head;
-       int count=0;
+
+        int cnt=0;
+        Node* temp=head;
         while(temp){
             temp=temp->next;
-            count++;
+            cnt++;
         }
-        return count;
+        return cnt;
     }
 };
 
