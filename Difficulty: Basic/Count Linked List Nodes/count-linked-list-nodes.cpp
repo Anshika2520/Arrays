@@ -28,9 +28,9 @@ class Solution {
     // Function to count nodes of a linked list.
     int getCount(struct Node* head) {
 
-        int cnt=0;
+        int cnt=1;
         Node* temp=head;
-        while(temp){
+        while(temp->next){
             temp=temp->next;
             cnt++;
         }
