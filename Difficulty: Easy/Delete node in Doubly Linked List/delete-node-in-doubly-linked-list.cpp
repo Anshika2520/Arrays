@@ -36,39 +36,43 @@ struct Node
 class Solution {
   public:
     Node* deleteNode(Node* head, int x) {
-        Node* temp=head;
-        Node* front=NULL;
-        Node* back=NULL;
-        int cnt=0;
-        if(head==NULL || head->next==NULL) return NULL;
-        while(temp->next){
-            cnt++;
-            if(cnt==x){
-                break;
-            }
-            temp=temp->next;
+        if(head==NULL || head->next==NULL){
+            return NULL;
         }
-         front=temp->next;
-         back=temp->prev;
-         if(back==NULL){
-             head=head->next;
+        Node* temp=head;
+        Node* back=NULL;
+        Node* front=NULL;
+        int cnt=1;
+        while(temp){
+            if(cnt==x){
+               break;
+            }
+                temp=temp->next;
+                cnt++;
+            }
+            front=temp->next;
+            back=temp->prev;
+            if(back==NULL) // We have to delete first node 
+            {
+                head=head->next;
+                 front->prev=NULL;
+                temp->next=NULL;
+                delete temp;
+            }
+            else if(front==NULL)
+            {
+                temp->prev =NULL;
+                back->next=NULL;
+                delete temp;
+            }
+            else{
              temp->next=NULL;
-             front->prev=NULL;
-             delete temp;
-             return head;
-         }
-         if(front==NULL){
-             back->next=NULL;
-             temp->prev=NULL;
-             delete temp;
-             return head;
-         }
-         temp->next=NULL;
-         back->next=front;
-         temp->prev=NULL;
-         front->prev=back;
-         delete temp;
-    return head;
+                back->next=front;
+                temp->prev=NULL;
+                front->prev=back;
+                delete temp;
+            }
+        return head;
     }
 };
 
