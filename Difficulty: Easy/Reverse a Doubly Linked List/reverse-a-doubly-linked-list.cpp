@@ -103,8 +103,8 @@ class Solution
     public:
     Node* reverseDLL(Node * head)
     {
+        stack<int> st;
         Node* temp=head;
-        stack<int>st;
         while(temp){
             st.push(temp->data);
             temp=temp->next;
