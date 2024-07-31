@@ -21,26 +21,26 @@ class Solution
     public:
     void merge(int arr[], int l, int m, int r)
     {
-         int left=l;
-         int right=m+1;
+         int i=l;
+         int j=m+1;
          vector<int>temp;
-         while(left<=m && right<=r){
-             if(arr[left]<=arr[right]){
-                 temp.push_back(arr[left]);
-                 left++;
+         while(i<=m && j<=r){
+             if(arr[i]<=arr[j]){
+                 temp.push_back(arr[i]);
+                 i++;
              }
              else{
-                 temp.push_back(arr[right]);
-                 right++;
+                 temp.push_back(arr[j]);
+                 j++;
              }
          }
-         while(left<=m){
-             temp.push_back(arr[left]);
-                 left++;
+         while(i<=m){
+              temp.push_back(arr[i]);
+                 i++;
          }
-         while(right<=r){
-              temp.push_back(arr[right]);
-                 right++;
+         while(j<=r){
+               temp.push_back(arr[j]);
+                 j++;
          }
          for(int i=l;i<=r;i++){
              arr[i]=temp[i-l];
@@ -49,8 +49,7 @@ class Solution
     public:
     void mergeSort(int arr[], int l, int r)
     {
-        int m=l+(r-l)/2;
-        //base case
+        int m=(l+r)/2;
         if(l>=r) return;
         mergeSort(arr,l,m);
         mergeSort(arr,m+1,r);
